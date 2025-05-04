@@ -5,6 +5,7 @@ import { OrbitControls, Float } from '@react-three/drei';
 import { Button } from './ui/Button';
 import { Container } from './ui/Container';
 import { ArrowDown } from 'lucide-react';
+import Link from 'next/link';
 
 const techLogos = [
   { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', alt: 'React' },
@@ -124,12 +125,16 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <Button className="gradient-border" size="lg">
-                Get Resume
-              </Button>
-              <Button variant="outline" size="lg">
-                Hire Me
-              </Button>
+              <Link href="/HarishResume.pdf" download target='_blank'>
+                <Button className="gradient-border" size="lg">
+                  Get Resume
+                </Button>
+              </Link>
+              <Link href="#contact" download>
+                <Button variant="outline" size="lg">
+                  Hire Me
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
 

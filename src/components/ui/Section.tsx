@@ -34,6 +34,7 @@ interface SectionTitleProps {
   subtitle?: string;
   className?: string;
   centered?: boolean;
+  mxAuto?: string;
 }
 
 export const SectionTitle: React.FC<SectionTitleProps> = ({
@@ -41,6 +42,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
   subtitle,
   className = '',
   centered = false,
+  mxAuto = 'mx-auto'
 }) => {
   return (
     <motion.div
@@ -54,7 +56,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className={`text-lg text-gray-400 max-w-2xl ${mxAuto}`}>
           {subtitle}
         </p>
       )}

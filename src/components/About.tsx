@@ -13,6 +13,7 @@ const About: React.FC = () => {
       <SectionTitle
         title="About Me"
         subtitle="I'm a passionate software engineer with a focus on creating elegant solutions to complex problems."
+        mxAuto='none'
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

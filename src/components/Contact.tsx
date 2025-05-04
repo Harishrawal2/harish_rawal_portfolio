@@ -4,6 +4,7 @@ import { Section, SectionTitle } from './ui/Section';
 import { Card, CardContent } from './ui/Card';
 import { Button } from './ui/Button';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const Contact: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -24,22 +25,40 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
       });
-    }, 1500);
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormState({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        toast.success('Message sent successfully!');
+      } else {
+        toast.error(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <Section id="contact" className="bg-dark-900 relative">
@@ -162,9 +181,10 @@ const Contact: React.FC = () => {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
-                  <h4 className="text-xl font-semibold mb-2">Message Sent!</h4>
+                  <h4 className="text-xl font-semibold mb-2">Thanks for Getting in Touch!</h4>
                   <p className="text-gray-400">
-                    Thanks for reaching out. I'll get back to you as soon as possible.
+                    I appreciate you reaching out and reviewing my portfolio. Whether you're a business or an individual,
+                    I look forward to learning more about how I can help. I'll be in touch very soon!
                   </p>
                   <Button
                     className="mt-6"

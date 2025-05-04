@@ -19,33 +19,33 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
-    company: "TechCorp Solutions",
-    position: "Senior Software Engineer",
-    period: "2023 - Present",
+    company: "Serviots Technology",
+    position: "Full Stack Developer",
+    period: "October 2024 - Present",
     current: true,
-    description: "Leading the development of cloud-native applications and microservices architecture. Implementing CI/CD pipelines and mentoring junior developers.",
-    technologies: ["React", "Node.js", "AWS", "Docker", "TypeScript"],
-    website: "https://example.com"
+    description: "Mobile, Web Application & Software Development Company. Develop and maintain scalable web applications using the MERN stack. Collaborate with designers and backend teams to implement seamless user experiences.Optimize application performance for speed and scalability.Debug and resolve technical issues across frontend and backend",
+    technologies: ["HTML/CSS/JavaScript", "React.js", "Next.js", "Node.js", "Express", "MongoDB", "Prisma", "SQL/PostgreSQL", "AWS", "Docker", "Redis", "TypeScript"],
+    website: "https://serviots.com"
   },
   {
     id: 2,
-    company: "Digital Innovations Inc",
+    company: "Eyefounder",
     position: "Full Stack Developer",
-    period: "2022 - 2023",
+    period: "March 2024 - August 2024",
     current: false,
-    description: "Developed and maintained multiple web applications. Improved application performance by 40% through optimization techniques.",
-    technologies: ["Vue.js", "Python", "PostgreSQL", "Redis"],
-    website: "https://example.com"
+    description: "Digital Marketing & Web Development Company. Collaborated with cross-functional teams to design, develop, and deploy web applications and systems. Utilized a comprehensive stack of technologies, including front-end and back-end frameworks, databases, and server management",
+    technologies: ["HTML/CSS/JavaScript", "React.js", "Next.js", "Node.js", "Express", "MongoDB", "TypeScript", "WordPress/CMS"],
+    website: "https://eyefounder.com"
   },
   {
     id: 3,
-    company: "StartUp Ventures",
-    position: "Frontend Developer",
-    period: "2021 - 2022",
+    company: "Zafron Technology",
+    position: "Full Stack MERN Developer",
+    period: "July 2023 - February 2024",
     current: false,
-    description: "Built responsive web interfaces and implemented new features. Collaborated with UX team to improve user experience.",
-    technologies: ["React", "JavaScript", "SASS", "Redux"],
-    website: "https://example.com"
+    description: "Software Development Company. Developed a full-stack food web application using Node.js, Express, and MongoDB. Designed and implemented a RESTful API for user authentication and recipe management",
+    technologies: ["React", "JavaScript", "SASS", "Redux", "nodejs", "MongoDB"],
+    website: "https://www.linkedin.com/company/zafron-technologies-and-solutions/"
   }
 ];
 
@@ -56,7 +56,7 @@ const Experience: React.FC = () => {
 
       <SectionTitle
         title="Work Experience"
-        subtitle="Over 2 years of professional experience in software development."
+        subtitle="Over 2 years of professional experience in Software Engineer (Full-stack Development)."
         centered
       />
 
@@ -72,7 +72,7 @@ const Experience: React.FC = () => {
             <Card className={`relative overflow-hidden ${exp.current ? 'border-primary-500/50' : ''}`}>
               {exp.current && (
                 <div className="absolute top-0 right-0">
-                  <Badge variant="primary" className="m-4">Current</Badge>
+                  <Badge variant="default" className="m-4">Current</Badge>
                 </div>
               )}
               <CardContent className="p-6">

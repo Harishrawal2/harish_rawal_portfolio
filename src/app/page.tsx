@@ -15,30 +15,27 @@ import MeteorEffect from '@/components/MeteorEffect';
 
 export default function Home() {
   useEffect(() => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = (this as HTMLAnchorElement).getAttribute('href')?.substring(1);
-        if (!targetId) return;
-        
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
+    // Define the click handler with correct 'this' typing
+    const handleClick = function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href')?.substring(1);
+      if (!targetId) return;
+
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    anchors.forEach(anchor => anchor.addEventListener('click', handleClick));
+
     return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', () => {});
-      });
+      anchors.forEach(anchor => anchor.removeEventListener('click', handleClick));
     };
   }, []);
-  
+
   return (
     <div className="relative min-h-screen bg-dark-950 text-white">
       <CustomCursor />

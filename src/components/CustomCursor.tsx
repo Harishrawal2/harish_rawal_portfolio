@@ -15,15 +15,14 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseDown = () => setCursorVariant('click');
     const handleMouseUp = () => setCursorVariant('default');
-    
-    const handleMouseEnter = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).tagName === 'A' || 
-          (e.target as HTMLElement).tagName === 'BUTTON' ||
-          (e.target as HTMLElement).classList.contains('clickable')) {
+
+    const handleMouseEnter = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.classList.contains('clickable')) {
         setCursorVariant('hover');
       }
     };
-    
+
     const handleMouseLeave = () => {
       setCursorVariant('default');
     };
@@ -31,8 +30,9 @@ const CustomCursor: React.FC = () => {
     window.addEventListener('mousemove', mouseMove);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
-    
-    document.querySelectorAll('a, button, .clickable').forEach(element => {
+
+    const interactiveElements = document.querySelectorAll('a, button, .clickable');
+    interactiveElements.forEach(element => {
       element.addEventListener('mouseenter', handleMouseEnter);
       element.addEventListener('mouseleave', handleMouseLeave);
     });
@@ -41,8 +41,8 @@ const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', mouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
-      
-      document.querySelectorAll('a, button, .clickable').forEach(element => {
+
+      interactiveElements.forEach(element => {
         element.removeEventListener('mouseenter', handleMouseEnter);
         element.removeEventListener('mouseleave', handleMouseLeave);
       });
@@ -81,7 +81,7 @@ const CustomCursor: React.FC = () => {
       className="custom-cursor fixed top-0 left-0 pointer-events-none z-50 rounded-full"
       variants={variants}
       animate={cursorVariant}
-      transition={{ type: "spring", stiffness: 500, damping: 28 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 28 }}
     />
   );
 };

@@ -11,27 +11,26 @@ import MeteorEffect from './components/MeteorEffect';
 
 function App() {
   useEffect(() => {
-    document.title = 'Harish Rawal | Software Engineer';
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+    // Function with explicit 'this' typing
+    const handleClick = function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
 
-        const targetId = this.getAttribute('href')?.substring(1);
-        if (!targetId) return;
+      const targetId = this.getAttribute('href')?.substring(1);
+      if (!targetId) return;
 
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
+    };
+
+    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    anchors.forEach(anchor => anchor.addEventListener('click', handleClick));
 
     return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', () => { });
-      });
+      anchors.forEach(anchor => anchor.removeEventListener('click', handleClick));
     };
   }, []);
 

@@ -29,7 +29,7 @@ const skillsData: Skill[] = [
   {
     name: 'DevOps',
     icon: <Settings size={24} className="text-secondary-500" />,
-    items: ['Docker', 'Kubernetes', 'CI/CD', 'AWS', 'GCP', 'Heroku', 'Netlify'],
+    items: ['Docker', 'CI/CD', 'AWS', 'Vercel', 'Netlify'],
   },
   {
     name: 'Web Technologies',
@@ -39,12 +39,12 @@ const skillsData: Skill[] = [
   {
     name: 'UI/UX',
     icon: <Layout size={24} className="text-secondary-500" />,
-    items: ['Figma', 'Adobe XD', 'Responsive Design', 'Motion Design', 'Accessibility'],
+    items: ['Figma', 'Responsive Design', 'Motion Design', 'Accessibility'],
   },
   {
     name: 'Tools',
     icon: <Terminal size={24} className="text-primary-500" />,
-    items: ['Git', 'VS Code', 'Postman', 'Chrome DevTools', 'npm/yarn', 'Jest'],
+    items: ['Git', "Github", 'VS Code', 'Postman', 'Chrome DevTools', 'npm'],
   },
   {
     name: 'Concepts',

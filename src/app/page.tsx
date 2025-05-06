@@ -12,6 +12,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import MeteorEffect from '@/components/MeteorEffect';
+import SkillsSlider from '@/components/SkillsSlider';
 
 export default function Home() {
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function Home() {
         <Projects />
         <Testimonials />
         <Contact />
+        <SkillsSlider />
       </main>
       <Footer />
     </div>

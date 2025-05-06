@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import MeteorEffect from '@/components/MeteorEffect';
 import SkillsSlider from '@/components/SkillsSlider';
+import EarthSection from '@/components/EarthSection';
+import EarthSections from '@/components/EarthSections';
 
 export default function Home() {
   useEffect(() => {
@@ -45,6 +47,8 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        {/* <EarthSection /> */}
+        <EarthSections />
         <Skills />
         <Experience />
         <Projects />
